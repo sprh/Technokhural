@@ -53,13 +53,31 @@ class UIBuilder extends StatelessWidget {
         );
       case UIItemType.button:
         final button = ui as UIItemButton;
-        break;
+        Widget? child;
+        if (button.text != null) {
+          child = UIBuilder(button.text!);
+        } else if (button.icon != null) {
+          child = UIBuilder(button.icon!);
+        }
+
+        return Container(
+          width: button.width,
+          height: button.height,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: button.backgroundColor.toColor,
+            borderRadius: BorderRadius.circular(button.borderRadius),
+            border: Border.all(color: Colors.black26),
+          ),
+          child: child,
+        );
       case UIItemType.icon:
         final icon = ui as UIItemIcon;
         break;
       case UIItemType.row:
         final row = ui as UIItemRow;
         return Row(
+          mainAxisSize: MainAxisSize.min,
           children: row.items.map((e) => UIBuilder(e)).toList(),
         );
       case UIItemType.column:
