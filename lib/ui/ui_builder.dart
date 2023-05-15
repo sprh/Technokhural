@@ -6,6 +6,7 @@ import 'package:technokhural_flutter_demo/models/ui_item_icon.dart';
 import 'package:technokhural_flutter_demo/models/ui_item_line.dart';
 import 'package:technokhural_flutter_demo/models/ui_item_row.dart';
 import 'package:technokhural_flutter_demo/models/ui_item_text.dart';
+import 'package:technokhural_flutter_demo/ui/utils/ui_color_x.dart';
 
 import '../models/ui_item.dart';
 import '../models/ui_item_panel.dart';
@@ -19,7 +20,13 @@ class UIBuilder extends StatelessWidget {
     switch (ui.type) {
       case UIItemType.panel:
         final panel = ui as UIItemPanel;
-        break;
+        return Container(
+          decoration: BoxDecoration(
+            color: panel.color.toColor,
+            borderRadius: BorderRadius.circular(panel.borderRadius),
+          ),
+          child: UIBuilder(panel.item),
+        );
       case UIItemType.text:
         final text = ui as UIItemText;
         break;
