@@ -7,6 +7,7 @@ import 'package:technokhural_flutter_demo/models/ui_item_line.dart';
 import 'package:technokhural_flutter_demo/models/ui_item_row.dart';
 import 'package:technokhural_flutter_demo/models/ui_item_text.dart';
 import 'package:technokhural_flutter_demo/ui/utils/ui_color_x.dart';
+import 'package:technokhural_flutter_demo/ui/utils/ui_icon_x.dart';
 
 import '../models/ui_item.dart';
 import '../models/ui_item_panel.dart';
@@ -73,7 +74,10 @@ class UIBuilder extends StatelessWidget {
         );
       case UIItemType.icon:
         final icon = ui as UIItemIcon;
-        break;
+        return Icon(
+          icon.icon.icon,
+          color: icon.color.toColor,
+        );
       case UIItemType.row:
         final row = ui as UIItemRow;
         return Row(
@@ -87,6 +91,5 @@ class UIBuilder extends StatelessWidget {
           children: column.items.map((e) => UIBuilder(e)).toList(),
         );
     }
-    return const SizedBox.shrink();
   }
 }
