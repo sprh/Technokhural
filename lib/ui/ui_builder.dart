@@ -46,7 +46,11 @@ class UIBuilder extends StatelessWidget {
         );
       case UIItemType.line:
         final line = ui as UIItemLine;
-        break;
+        return Container(
+          width: line.width,
+          height: line.height,
+          color: line.color.toColor,
+        );
       case UIItemType.button:
         final button = ui as UIItemButton;
         break;
