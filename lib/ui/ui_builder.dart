@@ -40,7 +40,10 @@ class UIBuilder extends StatelessWidget {
         );
       case UIItemType.divider:
         final divider = ui as UIItemDivider;
-        break;
+        return SizedBox(
+          width: divider.width,
+          height: divider.height,
+        );
       case UIItemType.line:
         final line = ui as UIItemLine;
         break;
