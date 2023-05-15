@@ -44,7 +44,9 @@ class UIBuilder extends StatelessWidget {
         break;
       case UIItemType.row:
         final row = ui as UIItemRow;
-        break;
+        return Row(
+          children: row.items.map((e) => UIBuilder(e)).toList(),
+        );
       case UIItemType.column:
         final column = ui as UIItemColumn;
         break;
