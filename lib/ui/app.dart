@@ -8,6 +8,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData.light(),
-        home: const Scaffold(body: HomeWidget()),
+        home: const Scaffold(
+          body: HomeWidget(),
+          backgroundColor: Colors.yellow,
+        ),
       );
 }

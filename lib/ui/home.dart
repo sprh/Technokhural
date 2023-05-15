@@ -1,4 +1,6 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+import 'package:technokhural_flutter_demo/models/ui_item.dart';
+import 'package:technokhural_flutter_demo/ui/ui_builder.dart';
 
 import '../api/api.dart';
 
@@ -11,11 +13,20 @@ class HomeWidget extends StatefulWidget {
 
 class _HomeWidgetState extends State<HomeWidget> {
   late final _api = Api();
+  UIItem? ui;
+
+  @override
+  void initState() {
+    super.initState();
+    _api.getUI().then((value) => setState(() => ui = value));
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Flutter technokhural demo'),
-    );
+    if (ui != null) {
+      return UIBuilder(ui!);
+    }
+
+    return const CircularProgressIndicator();
   }
 }
