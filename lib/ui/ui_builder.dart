@@ -29,7 +29,15 @@ class UIBuilder extends StatelessWidget {
         );
       case UIItemType.text:
         final text = ui as UIItemText;
-        break;
+        return Text(
+          text.text,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: text.size * 1.0,
+            fontWeight: text.bold ? FontWeight.bold : FontWeight.normal,
+            color: text.color.toColor,
+          ),
+        );
       case UIItemType.divider:
         final divider = ui as UIItemDivider;
         break;
@@ -50,6 +58,7 @@ class UIBuilder extends StatelessWidget {
       case UIItemType.column:
         final column = ui as UIItemColumn;
         return Column(
+          mainAxisSize: MainAxisSize.min,
           children: column.items.map((e) => UIBuilder(e)).toList(),
         );
     }
