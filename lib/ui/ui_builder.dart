@@ -49,7 +49,9 @@ class UIBuilder extends StatelessWidget {
         );
       case UIItemType.column:
         final column = ui as UIItemColumn;
-        break;
+        return Column(
+          children: column.items.map((e) => UIBuilder(e)).toList(),
+        );
     }
     return const SizedBox.shrink();
   }

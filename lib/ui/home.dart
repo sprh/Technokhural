@@ -24,9 +24,9 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     if (ui != null) {
-      return UIBuilder(ui!);
+      return Center(child: UIBuilder(ui!));
     }
 
-    return const CircularProgressIndicator();
+    return const Center(child: CircularProgressIndicator());
   }
 }
